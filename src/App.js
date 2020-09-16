@@ -64,7 +64,10 @@ class App extends React.Component {
   download(){
     var node = document.getElementById('Image');
     
-    node.innerHTML = "I'm an image now."
+    if(this.state.toggle===true)
+      node.innerHTML = this.state.quote.en;
+    else
+      node.innerHTML = this.state.quote.sr;
       domtoimage.toBlob(document.getElementById('Image'))
         .then(function(blob) {
           window.saveAs(blob, 'image.png');
@@ -133,28 +136,3 @@ class App extends React.Component {
 
 export default App;
 
-/*
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
-
-*/
